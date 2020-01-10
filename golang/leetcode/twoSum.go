@@ -8,18 +8,39 @@ func main() {
 	var nums []int
 	var target int
 
-	/*
-		nums = []int{2, 7, 11, 15}
-		target = 9
-		fmt.Println(twoSum(nums, target))
-	*/
+	nums = []int{2, 7, 11, 15}
+	target = 9
+	fmt.Println(twoSum(nums, target))
 
-	nums = []int{0, 3, 4, 0}
+	nums = []int{2, 1, 6, 4, 0}
+	target = 5
+	fmt.Println(twoSum(nums, target))
+
+	nums = []int{1, 0, 3, 4, 0}
 	target = 0
 	fmt.Println(twoSum(nums, target))
 
 }
 
+func twoSum(nums []int, target int) []int {
+	var i int = 0
+	for i <= len(nums)-1 {
+		j := i + 1
+		for j <= len(nums)-1 {
+			if nums[i]+nums[j] == target {
+				return []int{i, j}
+			}
+
+			j++
+		}
+
+		i++
+	}
+
+	return []int{}
+}
+
+/*
 func twoSum(nums []int, target int) []int {
 	var clct []int
 
@@ -40,6 +61,7 @@ func twoSum(nums []int, target int) []int {
 
 	return []int{}
 }
+*/
 
 /*
 func twoSum(nums []int, target int) []int {
