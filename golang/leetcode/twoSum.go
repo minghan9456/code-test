@@ -22,6 +22,22 @@ func main() {
 
 }
 
+// TC => O(n)
+func twoSum(nums []int, target int) []int {
+    m := make(map[int]int)
+    
+    for i, n := range nums{
+        j, ok := m[-n]
+        m[n - target] = i
+        if ok {
+            return []int{ j, i }
+        }
+    }
+
+    return []int{}
+}
+
+/*
 func twoSum(nums []int, target int) []int {
 	var i int = 0
 	for i <= len(nums)-1 {
@@ -39,6 +55,7 @@ func twoSum(nums []int, target int) []int {
 
 	return []int{}
 }
+*/
 
 /*
 func twoSum(nums []int, target int) []int {
