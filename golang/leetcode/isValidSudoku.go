@@ -38,6 +38,72 @@ func main() {
 }
 
 func isValidSudoku(board [][]byte) bool {
+    return colVaild(board) && rowVaild(board) && blockVaild(board)
+}
+
+func colVaild(board [][]byte) bool {
+    for c := 0; c < 9; c++ {
+        set := make([]int, 10)
+        for i := 0; i < 9; i++ {
+            if !cellVaild(set, board[i][c]) {
+                return false
+            }
+        }
+        
+    }
+    
+    return true
+}
+
+func rowVaild(board [][]byte) bool {
+    for r := 0; r < 9; r++ {
+        set := make([]int, 10)
+        for i := 0; i < 9; i++ {
+            a := cellVaild(set, board[r][i]) 
+            if !a {
+                return false
+            }
+        }
+        
+    }
+    
+    return true
+}
+
+func blockVaild(board [][]byte) bool {
+    for r := 0; r < 9; r += 3 {
+        for c := 0; c < 9; c += 3 {
+            
+            set := make([]int, 10)
+            for y := r; y < r + 3; y++{
+                for x := c; x < c + 3; x++{
+                    if !cellVaild(set, board[y][x]) {
+                        return false
+                    }
+                }
+            }
+        }
+    }
+    
+    return true
+}
+
+func cellVaild(set []int, cellVal byte) bool {
+    if cellVal == '.' {
+        return true
+    }
+    
+    // '0' => 48
+    if set[cellVal-48] == 1 {
+        return false
+    }
+    
+    set[cellVal-48] = 1
+    return true
+}
+
+/*
+func isValidSudoku(board [][]byte) bool {
 	// 0 => 48
 
 	var i int = 0
@@ -112,3 +178,4 @@ func isValidSudoku(board [][]byte) bool {
 
 	return true
 }
+*/
