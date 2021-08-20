@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/container-with-most-water/submissions/
 
+// TC => O(n)
+
 func maxArea(height []int) int {
     l := 0
     r := len(height) - 1
