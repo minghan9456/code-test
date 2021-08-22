@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"strings"
+	// "strings"
 )
 
 func main() {
@@ -11,6 +11,24 @@ func main() {
 	fmt.Println(numJewelsInStones("Abs", "aaBefsAbs"))
 }
 
+func numJewelsInStones(jewels string, stones string) int {
+    cache := make(map[rune]bool)
+    res := 0
+    
+    for _, r := range jewels {
+        cache[r] = true
+    }
+    
+    for _, sr := range stones {
+        if _, ok := cache[sr]; ok {
+            res++
+        }
+    }
+    
+    return res
+}
+
+/*
 func numJewelsInStones(J string, S string) int {
 
 	num := 0
@@ -27,3 +45,4 @@ func numJewelsInStones(J string, S string) int {
 	}
 	return num
 }
+*/
