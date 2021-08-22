@@ -16,6 +16,29 @@ func main() {
 }
 
 func plusOne(digits []int) []int {
+    digits[len(digits) - 1] += 1
+
+    check(&digits, len(digits) - 1)
+    
+    return digits
+}
+
+func check(nums *[]int, idx int) {
+    if (*nums)[idx] >= 10 {
+        n := (*nums)[idx] % 10
+        (*nums)[idx] = n
+        
+        if idx == 0 {
+            (*nums) = append([]int{1}, (*nums)...)
+        } else {
+            (*nums)[idx - 1] += 1
+            check(nums, idx - 1)
+        }  
+    }
+}
+
+/*
+func plusOne(digits []int) []int {
 
 	var ret []int
 
@@ -45,3 +68,4 @@ func plusOne(digits []int) []int {
 
 	return ret
 }
+*/
