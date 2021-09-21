@@ -24,6 +24,16 @@ func reverseString(s []byte) {
 	}
 }
 
+func reverseString(s []byte)  {
+    l := len(s) - 1
+    m := l/2
+    if l >= 1 {
+        for i := 0; i <= m; i++ {
+            s[i], s[l-i] = s[l-i], s[i]
+        }
+    }
+}
+
 /*
 func reverseString(s []byte) {
 	i := 0
