@@ -19,6 +19,27 @@ func main() {
 }
 
 func maxProfit(prices []int) int {
+	left := 0
+	right := 1
+	maxP := 0
+
+	for right <= len(prices)-1 {
+		if prices[left] < prices[right] {
+			if prices[right]-prices[left] > maxP {
+				maxP = prices[right] - prices[left]
+			}
+		} else {
+			left = right
+		}
+
+		right++
+	}
+
+	return maxP
+}
+
+/*
+func maxProfit(prices []int) int {
 	n := len(prices)
 	if n < 1 {
 		return 0
@@ -42,6 +63,7 @@ func maxProfit(prices []int) int {
 
 	return profit
 }
+*/
 
 /*
 func maxProfit(prices []int) int {
