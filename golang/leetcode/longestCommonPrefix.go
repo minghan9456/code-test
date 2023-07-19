@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 func main() {
@@ -14,6 +15,39 @@ func main() {
 	fmt.Println(longestCommonPrefix(strs))
 }
 
+func longestCommonPrefix(strs []string) string {
+	prefix := ""
+	sLen := len(strs)
+
+	if sLen == 0 {
+		return prefix
+	} else if sLen == 1 {
+		return strs[0]
+	}
+
+	sort.Strings(strs)
+	first := strs[0]
+	last := strs[sLen-1]
+
+	minLen := 0
+	if len(first) < len(last) {
+		minLen = len(first)
+	} else {
+		minLen = len(last)
+	}
+
+	for i := 0; i < minLen; i++ {
+		if first[i] != last[i] {
+			return prefix
+		}
+
+		prefix += string(first[i])
+	}
+
+	return prefix
+}
+
+/*
 func longestCommonPrefix(strs []string) string {
 	prefix := ""
 	sLen := len(strs)
@@ -48,3 +82,4 @@ Exit:
 
 	return prefix
 }
+*/

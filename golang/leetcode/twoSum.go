@@ -24,17 +24,20 @@ func main() {
 
 // TC => O(n)
 func twoSum(nums []int, target int) []int {
-    m := make(map[int]int)
-    
-    for i, n := range nums{
-        j, ok := m[-n]
-        m[n - target] = i
-        if ok {
-            return []int{ j, i }
-        }
-    }
+	// collect every time target - num
+	// nms = [2,7,11,15]
+	// m = [7, 2 , -2, -6]
+	m := make(map[int]int)
 
-    return []int{}
+	for i, n := range nums {
+		if j, ok := m[n]; ok {
+			// if ok == true, means v has appeared in past.
+			return []int{j, i}
+		}
+		m[target-n] = i
+	}
+
+	return []int{}
 }
 
 /*
